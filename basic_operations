@@ -1,0 +1,8 @@
+@baseurl = http://vonk.fire.ly
+@resource = Patient
+
+# Get all patient resources in a FHIR server (response is a bundle)
+GET {{baseurl}}/{{resource}}
+
+
+
