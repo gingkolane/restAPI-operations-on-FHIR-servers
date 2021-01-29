@@ -1,0 +1,23 @@
+Release 5 Preview #3
+
+1. FHIR RESTful API operations:
+   http://build.fhir.org/http.html
+
+FHIR uses 'RESTful' specification on resources. Each "resource type" has the same set of interactions defined that can be used to manage the resources in a highly granular fashion. Applications claiming conformance to this framework claim to be conformant to "RESTful FHIR".
+
+There are three levels interactions:
+
+- Instance Level: read, vread, update, patch, delete, history
+
+- Type Level: create, search, history
+
+- Whole System: capabilities, batch/transaction, history, search
+
+2. FHIR defined Operations:
+
+3. Implementation Defined Operations: Different FHIR Implementations can define their own operations
+   http://build.fhir.org/operations.html#extensibility
+
+4.
+
+Servers can choose which of these interactions are made available and which resource types they support.Servers SHALL provide a Capability Statement that specifies which interactions and resources are supported.

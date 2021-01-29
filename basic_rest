@@ -1,3 +1,7 @@
+# Source reference: 
+# http://build.fhir.org/http.html
+
+
 @baseurl = http://vonk.fire.ly
 @resource = Patient
 
