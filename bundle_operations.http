@@ -1,0 +1,11 @@
+@baseurl = http://r4.heliossoftware.com/fhir
+@resource = Patient
+
+
+### read all patient resources in a FHIR server
+#  @name patientsRequest
+GET {{baseurl}}/{{resource}}
+
+### read the first patient using file variable (patientsRequest) and JsonPath
+@patient1_id = {{patientsRequest.response.body.$.entry.0.resource.id}}
+GET {{baseurl}}/{{resource}}/{{patient1_id}}

@@ -1,0 +1,92 @@
+# Search Parameter Types
+# Base search URL 
+# base-url/resource?parameter&parameter&.. 
+https://vonk.fire.ly/Patient?name=John
+
+# number
+length=27
+# date
+birthdate=1964-12-10
+# string
+name=John
+name:exact=John-William
+# token  field = system | code
+gender=female 
+gender=http://hl7.org/fhir/v3/AdministrativeGender|female 
+gender=|female
+
+# Reference
+subject:Patient=23
+# Quantity
+value=5.4|http://unitsofmeasure.org|mg
+
+# Composite s
+# field = value , value
+# field = state$value,state$value
+state-on-date=new$2013-05-04,active$2013-05-05
+
+# uri 
+uri:below=http://acme.org/fhir/
+
+# Parameters for all resources==============
+# _id 
+_id=23
+
+# _lastUpdated
+_lastUpdated=gt2010-10-01
+
+# _tag
+_tag=http://acme.org/codes|needs-review
+
+# _profile
+_profile=http://hl7.org/fhir/StructureDefinition/lipid
+
+# _security
+_security = http://hl7.org/fhir/v3/ActCode|CEL _text=(bone OR liver) and metastases
+
+# _text
+_text=(bone OR liver) and metastases
+
+# _content 
+_content=(bone OR liver) and metastases
+
+# _list
+_list=42
+
+# _has 
+_has:Observation:patient:code=1234-5
+
+# _type
+_type=Observation,Condition
+
+# Search result parameters===================
+
+# _include 
+_include=MedicationPrescription:patient
+
+# _revinclude 
+_revinclude=Provenance:target
+
+# _count
+_count=50
+
+# _sort
+_sort=status,-date,category 
+
+# _total
+_total=estimate
+
+# _summary
+_summary=true | text | data | count | false
+
+# _elements
+
+# _contained 
+_contained = true | false | both
+
+# _containedType
+_containedType = container | contained
+
+
+# Chained parameters ====================
+GET [base-url]/DiagnosticReport?subject.name=peter

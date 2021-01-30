@@ -21,3 +21,8 @@ There are three levels interactions:
 4.
 
 Servers can choose which of these interactions are made available and which resource types they support.Servers SHALL provide a Capability Statement that specifies which interactions and resources are supported.
+
+Reference on using rest client extension in vscode
+https://www.praveenc.com/posts/vscode-rest-client-extension/
+
+https://dev.to/techwatching/testing-your-api-with-rest-client-h23

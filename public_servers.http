@@ -8,6 +8,8 @@
 
 # FHIR R4
 
+http://hapi.fhir.org/baseR4
+
 # AEGIS.net, Inc.:
 
 # R4 - http://wildfhir4.aegis.net/fhir4-0-1
@@ -214,13 +216,8 @@
 
 # User: Test25001@dmd.com Pwd: Track@03
 
-Helios FHIR Server
+# Helios FHIR Server
 
-http://r4.heliossoftware.com/fhir - open sandbox
-Supports R4 read and write for all FHIR Resource types
+# http://r4.heliossoftware.com/fhir - open sandbox
+# Supports R4 read and write for all FHIR Resource types
 
-@baseurl = http://vonk.fire.ly
-
-# Get all patient resources in a FHIR server (response is a bundle)
-
-GET {{baseurl}}/Patient

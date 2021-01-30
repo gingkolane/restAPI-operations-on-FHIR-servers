@@ -1,0 +1,64 @@
+# Reference: 
+# http://build.fhir.org/operationslist.html
+@baseurl = http://wildfhir4.aegis.net/fhir4-0-1
+@resource = Patient
+@id = 
+@patient-id =
+
+# validate a resource
+###
+{{baseurl}}/{{resource}}/$validate
+###
+{{baseurl}}/{{resource}}/{{id}}$validate
+
+# Terminology Operations
+###
+{{baseurl}}/ValueSet/{{id}}/$expand
+###
+{{baseurl}}/ValueSet/{{id}}/$validate-code
+###
+{{baseurl}}/CodeSystem/{{id}}/$lookup
+###
+{{baseurl}}/CodeSystem/{{id}}/$subsumes
+###
+{{baseurl}}/CodeSystem/{{id}}/$find-matches
+
+# Fetch Records
+###
+{{baseurl}}/Patient/{{patient-id}}/$everything
+
+# Meta operations
+###
+{{baseurl}}/$meta
+###
+{{baseurl}}/{{resource}}/$meta 
+###
+{{baseurl}}/{{resource}}/{{id}}/$meta 
+###
+{{baseurl}}/{{resource}}/{{id}}/$meta-add
+###
+{{baseurl}}/{{resource}}/{{id}}/$meta-delete
+
+### Generate a document
+{{baseurl}}/Composition/{{id}}/$document
+
+###Process Message
+{{baseurl}}/$process-message
+
+### Find a functional List
+{{baseurl}}/List/$find
+
+# ConceptMap operations
+###
+{{baseurl}}/ConceptMap/$translate
+###
+{{baseurl}}/ConceptMap/{{id}}/$translate
+
+### Closure Table Maintenance
+{{baseurl}}/$closure
+
+#Questionnaire operations
+###
+{{baseurl}}/StructureDefinition/$questionnaire
+###
+{{baseurl}}/StructureDefinition/{{id}}/$questionnaire

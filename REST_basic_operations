@@ -1,0 +1,108 @@
+# Source reference: 
+# http://build.fhir.org/http.html
+
+@baseurl = http://hapi.fhir.org/baseR4
+@resource = Patient
+
+# Instance Level Operations: read, vread, update, patch, delete, history
+
+### read all patient resources in a FHIR server
+
+#  @name patientsRequest
+GET {{baseurl}}/{{resource}}
+
+### read one patient
+# Method 1: In above entry, find first patient's id manually (1160138 for hapi fhir r4)
+GET {{baseurl}}/{{resource}}/1160138
+
+# Method 2: Use file variable (patientsRequest) and JsonPath
+ 
+### 
+@patient1_id = {{patientsRequest.response.body.$.entry.0.resource.id}}
+GET {{baseurl}}/{{resource}}/{{patient1_id}}
+
+#### create 
+POST {{baseurl}}/{{resource}}
+Content-Type: application/fhir+json
+
+< ./Patient-smile.json
+
+### vread
+# GET {{baseurl}}/{{resource}}/[resource_id]/_history/[vid]
+GET {{baseurl}}/{{resource}}/{{patient1_id}}/_history/1
+
+### Update
+POST {{baseurl}}/{{resource}}/37078
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Patient",
+  "id": "37078",
+  "identifier": [ { "system": "urn:oid:1.2.36.146.595.217.0.1", "value": "12345" } ],
+  "name": [ {
+      "family": "Chalmers",
+      "given": [ "Peter", "James" ]
+  } ],
+  "gender": "male",
+  "birthDate": "1974-01-13",
+  "address": [ {
+      "line": [ "534 Erewhon St" ],
+      "city": "PleasantVille",
+      "state": "Vic",
+      "postalCode": "3999"
+  } ]
+}
+
+
+### patch
+
+PATCH {{baseurl}}/{{resource}}/37078
+Content-Type: application/json-patch+json
+
+[
+ { 
+   "op": "replace", 
+   "path": "/address/0/postalCode", 
+   "value": "M5C 2X8" 
+ },
+ { 
+   "op": "replace", 
+   "path": "/birthDate", 
+   "value": "1974-02-13" 
+ }
+]
+
+
+### delete
+
+DELETE {{baseurl}}/{{resource}}/37078
+
+### History
+
+### Instance level
+GET {{baseurl}}/{{resource}}/37078/_history
+
+### Type level
+GET {{baseurl}}/{{resource}}/_history
+
+### System level
+GET {{baseurl}}/_history
+
+
+### Search 
+@parameters = 
+
+### Type level
+GET {{baseurl}}/{{resource}}?[parameters]
+
+### System level
+GET {{baseurl}}?[parameters]
+
+
+
+
+### Capability (System level)
+ GET {{baseurl}}/metadata
+
+### Batch transaction (System level)
+POST {{baseurl}}/
